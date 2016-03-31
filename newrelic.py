@@ -3,6 +3,7 @@
 import sys
 import re
 import time
+import csv
 
 db_file = 'newrelic.csv'
 
@@ -16,28 +17,22 @@ def set_time(result):
     result.insert(0, when)
 
 
-def get_db_line(result):
-    delimiter = ','
-    return delimiter.join(result)
+def write_line_to_db(result):
+    with open(db_file, 'a+', newline='\n') as db:
+        writer = csv.writer(db, delimiter=',')
+        writer.writerow(result)
 
 
-def write_line_to_db(line):
-    db = open(db_file, 'a+')
-    db.write(line + '\n')
-    db.close()
-
-
-def print_new_line(line):
-    print(line)
+def print_new_line(result):
+    print(', '.join(result))
 
 
 def main():
     data = sys.argv[1]
     result = parse_input(data)
     set_time(result)
-    line = get_db_line(result)
-    write_line_to_db(line)
-    print_new_line(line)
+    write_line_to_db(result)
+    print_new_line(result)
 
 if __name__ == '__main__':
     main()
