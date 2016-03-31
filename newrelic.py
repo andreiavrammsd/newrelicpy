@@ -32,7 +32,7 @@ def print_new_line(line):
 
 
 def main():
-    data = sys.argv[1] #2.61 s	24.7 ppm	110 ms	4.41k rpm	3.13%
+    data = sys.argv[1]
     result = parse_input(data)
     set_time(result)
     line = get_db_line(result)
