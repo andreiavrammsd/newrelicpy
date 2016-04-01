@@ -4,6 +4,7 @@ import sys
 import re
 import time
 import csv
+import backup
 
 db_file = 'newrelic.csv'
 
@@ -31,7 +32,9 @@ def main():
     data = sys.argv[1]
     result = parse_input(data)
     set_time(result)
+    backup.save(db_file)
     write_line_to_db(result)
+    backup.save(db_file)
     print_new_line(result)
 
 if __name__ == '__main__':
