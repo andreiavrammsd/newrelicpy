@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
 
 import sys
-from app import reader, validation, data, backup, config, db, output
+from app import reader, validation, data, backup, db, output
 
 
 def main():
@@ -9,9 +9,9 @@ def main():
     validation.validate(input_data)
     data.add_time(input_data)
 
-    backup.save(config.get('db_file'))
+    backup.save()
     db.insert(input_data)
-    backup.save(config.get('db_file'))
+    backup.save()
 
     output.write(input_data)
 
