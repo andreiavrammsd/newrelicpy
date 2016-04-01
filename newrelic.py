@@ -1,12 +1,7 @@
 #!/usr/bin/python3.4
 
 import sys
-import reader
-import data
-import validation
-import backup
-import db
-import output
+from app import reader, validation, data, backup, db, output
 
 db_file = 'newrelic.csv'
 
