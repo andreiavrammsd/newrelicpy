@@ -1,5 +1,5 @@
 config = {
-    'db_file': 'newrelic.csv'
+    'db_file': 'data/newrelic.csv'
 }
 
 
