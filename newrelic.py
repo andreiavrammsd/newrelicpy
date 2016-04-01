@@ -1,9 +1,7 @@
 #!/usr/bin/python3.4
 
 import sys
-from app import reader, validation, data, backup, db, output
-
-db_file = 'newrelic.csv'
+from app import reader, validation, data, backup, config, db, output
 
 
 def main():
@@ -11,9 +9,9 @@ def main():
     validation.validate(input_data)
     data.add_time(input_data)
 
-    backup.save(db_file)
-    db.insert(db_file, input_data)
-    backup.save(db_file)
+    backup.save(config.get('db_file'))
+    db.insert(input_data)
+    backup.save(config.get('db_file'))
 
     output.write(input_data)
 
