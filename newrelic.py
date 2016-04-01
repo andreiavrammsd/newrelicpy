@@ -6,12 +6,9 @@ import data
 import validation
 import backup
 import db
+import output
 
 db_file = 'newrelic.csv'
-
-
-def print_new_line(result):
-    print(', '.join(result))
 
 
 def main():
@@ -23,7 +20,7 @@ def main():
     db.insert(db_file, input_data)
     backup.save(db_file)
 
-    print_new_line(input_data)
+    output.write(input_data)
 
 if __name__ == '__main__':
     main()
