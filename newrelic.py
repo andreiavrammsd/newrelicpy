@@ -5,6 +5,7 @@ import re
 import time
 import csv
 import backup
+import validation
 
 db_file = 'newrelic.csv'
 
@@ -31,10 +32,15 @@ def print_new_line(result):
 def main():
     data = sys.argv[1]
     result = parse_input(data)
+
+    validation.validate(result)
+
     set_time(result)
+
     backup.save(db_file)
     write_line_to_db(result)
     backup.save(db_file)
+
     print_new_line(result)
 
 if __name__ == '__main__':
