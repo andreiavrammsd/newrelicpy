@@ -1,5 +1,7 @@
 import csv
 from app import config
+from pathlib import Path
+from shutil import copy
 
 db_file = config.get('db_file')
 
@@ -16,3 +18,9 @@ def select() -> list:
         rows = list(reader)
 
     return rows
+
+def setup():
+    db = Path(db_file)
+
+    if not db.is_file():
+        copy(config.get('db_file_template'), db_file)

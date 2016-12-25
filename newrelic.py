@@ -23,6 +23,7 @@ def insert(arg):
     validation.validate(input_data)
     data.add_time(input_data)
 
+    db.setup()
     backup.save()
     db.insert(input_data)
     backup.save()
